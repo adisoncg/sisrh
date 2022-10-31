@@ -20,8 +20,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('funcionarios/index', [FuncionarioController::class,'index'])->name ('funcionarios.index');
-Route::get('funcionarios/create', [FuncionarioController::class,'create'])->name ('funcionarios.create');   
+Route::get('/funcionarios', [FuncionarioController::class,'index'])->name('funcionarios.index');
+Route::get('/funcionarios/create', [FuncionarioController::class,'create'])->name('funcionarios.create');   
+Route::post('/funcionarios', [FuncionarioController::class,'store'])->name('funcionarios.store');   
 
 Route::get('cargos/', [CargoController::class,'index'])->name ('cargos.index'); 
 Route::get('cargos/create', [CargoController::class,'create'])->name ('cargos.create'); 
