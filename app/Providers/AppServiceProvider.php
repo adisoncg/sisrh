@@ -24,7 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $departamentos = Departamento::select('id', 'nome')->orderBy('nome', 'asc')->get();
-        view()->share('departamentos', $departamentos);
+        
+      $departamentos = Departamento::select('id', 'nome')->orderBy('nome', 'asc')->get();
+       view()->share('departamentos', $departamentos);
+    
     }
+
+    
 }
