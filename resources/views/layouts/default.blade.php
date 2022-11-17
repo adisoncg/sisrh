@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
         <div class="container">
-            <a href="/"><img src="/images/layout/logo_white.png" height="30" alt="Sis.RH"></a>
+            <a href="{{ route('dashboard.index')}}"><img src="/images/layout/logo_white.png" height="30" alt="Sis.RH"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item px-3">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('dashboard.index')}}">Home</a>
                     </li>
                     <li class="nav-item px-3 dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -44,7 +44,17 @@
                         <a class="nav-link" href="{{ route('departamentos.index') }}">Departamentos</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a class="nav-link" href="#">Usuários</a>
+                    @can('acessar-usuarios')
+                        <a class="nav-link" href="{{ route('usuarios.index') }}">Usuários</a>
+                    </li>
+                    @endcan
+                    <li class="nav-item px-3 dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Olá {{ auth()->user()->name }}</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('funcionarios.create') }}">Alterar dados</a></li>
+                            <li><a class="dropdown-item" href="{{ route('login.logout') }}">Sair</a></li>                           
+                        </ul>
                     </li>
                 </ul>
             </div>
